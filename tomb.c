@@ -8,23 +8,23 @@
 
 
 
-/*void createArray(intArray* array){
+void createArray(intArray* array){
     (*array).elements = (int *)malloc(sizeof(int) * (*array).size);
 
     if ((*array).elements == 0){
         return;
     }
-}*/
+}
 
 
 
-intArray * Create(int n)
+/*intArray * Create(int n)
 {
     intArray * array = (intArray*)calloc(1,sizeof(intArray));
     array->size=n;
     array->elements=(int*)calloc(n,sizeof(int));
     return array;
-}
+}*/
 
 int get(intArray* array, int i){
     if(i>=0 && i<array->size)
@@ -34,22 +34,21 @@ int get(intArray* array, int i){
 }
 
 void freeArray(intArray* array){
-    free(array->elements);
-    free(array);
+    free((*array).elements);
 }
 
 
 int put(intArray* array, int i, int x){
-    if(i>=0 && i<array->size)
+    if(i>=0 && i<(*array).size)
     {
-        array->elements[i]=x;
+        (*array).elements[i]=x;
     }
 }
 
 
 void readArray(const char* file ,intArray* array){
-    Create(array->size);
-    int n = array->size;
+    createArray(&(*array));
+    int n = (*array).size;
     FILE *fin=fopen(file,"rt");
     if(!fin){
         printf("nincs allomany");
@@ -60,7 +59,7 @@ void readArray(const char* file ,intArray* array){
     {
         int temp;
         fscanf(fin,"%d",&temp);
-        put(array,i,temp);
+        put(&(*array),i,temp);
     }
     fclose(fin);
 

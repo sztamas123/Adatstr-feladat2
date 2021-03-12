@@ -6,5 +6,4 @@ int main() {
     readArray("be.txt", a);
     printArray(*a);
 
-
 }
