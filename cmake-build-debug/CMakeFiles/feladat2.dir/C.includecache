@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tamas/feladat2/tomb.c
+bits/types/FILE.h
+-
+tomb.h
+/home/tamas/feladat2/tomb.h
+
+/home/tamas/feladat2/tomb.h
+stdlib.h
+-
+stdbool.h
+-
+stdio.h
+-
+

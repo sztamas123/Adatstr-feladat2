@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/feladat2.dir/main.c.o CMakeFiles/feladat2.dir/tomb.c.o  -o feladat2 
