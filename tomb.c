@@ -3,12 +3,12 @@
 //
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <bits/types/FILE.h>
 #include "tomb.h"
 
 
 
 void createArray(intArray* array){
+    (*array).size=0;
     (*array).elements = (int *)malloc(sizeof(int) * (*array).size);
 
     if ((*array).elements == 0){
@@ -43,6 +43,11 @@ int put(intArray* array, int i, int x){
     {
         (*array).elements[i]=x;
     }
+    else{
+        (*array).elements=(int*)realloc((*array).elements,sizeof(int)*((*array).size+1));
+        (*array).elements[i]=x;
+        (*array).size++;
+    }
 }
 
 
@@ -53,9 +58,9 @@ void readArray(const char* file ,intArray* array){
     if(!fin){
         printf("nincs allomany");
     }
-    fscanf(fin,"%d", n);
+    fscanf(fin,"%d", &n);
 
-    for(int i=0; i<(*array).size; ++i)
+    for(int i=0; i<n; ++i)
     {
         int temp;
         fscanf(fin,"%d",&temp);
@@ -67,7 +72,7 @@ void readArray(const char* file ,intArray* array){
 
 void printArray(intArray array){
     for (int i = 0; i < (array).size; ++i) {
-        printf("%i", (array).elements[i]);
+        printf("%i ", (array).elements[i]);
     }
     printf("\n");
 }
